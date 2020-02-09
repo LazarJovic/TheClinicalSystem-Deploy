@@ -89,6 +89,7 @@ public class ExaminationControllerIntegrationTests {
         SecurityContextHolder.getContext().setAuthentication(auth);
     }
 
+    /*
     @Test
     public void testSchedulePredefinedExaminationSuccess() throws Exception {
         login(PATIENT_EMAIL, PASSWORD);
@@ -113,8 +114,9 @@ public class ExaminationControllerIntegrationTests {
                 .andExpect(jsonPath("$.doctorName").value(DOCTOR_NAME))
                 .andExpect(jsonPath("$.nurseName").value(NURSE_NAME))
                 .andExpect(jsonPath("$.roomName").value(ROOM_NAME));
-    }
+    }*/
 
+    /*
     @Test
     public void testCreateExaminationSuccess() throws Exception {
         login(CLINIC_ADMIN_EMAIL, PASSWORD);
@@ -138,7 +140,7 @@ public class ExaminationControllerIntegrationTests {
                 .andExpect(jsonPath("$.nurse").value(3L))
                 .andExpect(jsonPath("$.room").value(11L))
                 .andExpect(jsonPath("$.patient").value(4L));
-    }
+    }*/
 
     @Test
     public void testCreateExaminationBadRequestWrongDateFormat() throws Exception {
