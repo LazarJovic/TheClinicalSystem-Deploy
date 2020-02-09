@@ -135,7 +135,7 @@ public class ExaminationControllerIntegrationTests {
                 .andExpect(jsonPath("$.endTime").value(END_TIME))
                 .andExpect(jsonPath("$.discount").value("0.0"))
                 .andExpect(jsonPath("$.doctor").value(6L))
-                .andExpect(jsonPath("$.nurse").value(3L))
+                .andExpect(jsonPath("$.nurse").value(7L))
                 .andExpect(jsonPath("$.room").value(11L))
                 .andExpect(jsonPath("$.patient").value(4L));
     }

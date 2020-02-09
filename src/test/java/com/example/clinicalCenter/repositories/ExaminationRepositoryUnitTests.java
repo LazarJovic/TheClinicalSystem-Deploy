@@ -28,7 +28,7 @@ public class ExaminationRepositoryUnitTests {
         List<Examination> examinations = this.examinationRepository.findAllActiveExaminationsOfDoctor(DOCTOR_ID);
         assertEquals(2, examinations.size());
         Long[] actuals = {examinations.get(0).getId(), examinations.get(1).getId()};
-        Long[] expecteds = {12L, 14L};
+        Long[] expecteds = {12L, 19L};
         Assert.assertArrayEquals(expecteds, actuals);
     }
 
