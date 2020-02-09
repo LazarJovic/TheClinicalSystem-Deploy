@@ -2,7 +2,6 @@ package com.example.clinicalCenter.controllers;
 
 import com.example.clinicalCenter.TestUtils;
 import com.example.clinicalCenter.dto.ExaminationDTO;
-import com.example.clinicalCenter.dto.PredefinedExaminationDTO;
 import com.example.clinicalCenter.model.Patient;
 import com.example.clinicalCenter.model.UserTokenState;
 import com.example.clinicalCenter.security.auth.JwtAuthenticationRequest;
@@ -33,7 +32,6 @@ import static com.example.clinicalCenter.constants.ExaminationConstants.*;
 import static com.example.clinicalCenter.constants.UserConstants.*;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
@@ -88,59 +86,6 @@ public class ExaminationControllerIntegrationTests {
         Authentication auth = new UsernamePasswordAuthenticationToken(patient,null);
         SecurityContextHolder.getContext().setAuthentication(auth);
     }
-
-    /*
-    @Test
-    public void testSchedulePredefinedExaminationSuccess() throws Exception {
-        login(PATIENT_EMAIL, PASSWORD);
-        onSetUpLoginPatient();
-        PredefinedExaminationDTO dto = new PredefinedExaminationDTO(EXAMINATION_ID, TYPE_NAME, EXAM_DATE, START_TIME, END_TIME,
-                PRICE_WITH_DISCOUNT, DOCTOR_NAME, NURSE_NAME, ROOM_NAME);
-
-        String requestJson =  TestUtils.json(dto);
-
-        mockMvc.perform(put(URL_PREFIX + "/schedule-examination")
-                .header("Authorization", accessToken)
-                .contentType(contentType)
-                .content(requestJson))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(contentType))
-                .andExpect(jsonPath("$.id").value(EXAMINATION_ID))
-                .andExpect(jsonPath("$.typeName").value(TYPE_NAME))
-                .andExpect(jsonPath("$.examDate").value(EXAM_DATE))
-                .andExpect(jsonPath("$.startTime").value(START_TIME))
-                .andExpect(jsonPath("$.endTime").value(END_TIME))
-                .andExpect(jsonPath("$.priceWithDiscount").value(PRICE_WITH_DISCOUNT))
-                .andExpect(jsonPath("$.doctorName").value(DOCTOR_NAME))
-                .andExpect(jsonPath("$.nurseName").value(NURSE_NAME))
-                .andExpect(jsonPath("$.roomName").value(ROOM_NAME));
-    }*/
-
-    /*
-    @Test
-    public void testCreateExaminationSuccess() throws Exception {
-        login(CLINIC_ADMIN_EMAIL, PASSWORD);
-        ExaminationDTO dto = new ExaminationDTO(null, 0L, EXAM_DATE, START_TIME, END_TIME, "0", 6L,
-                14L, 11L, 4L);
-
-        String requestJson =  TestUtils.json(dto);
-
-        mockMvc.perform(post(URL_PREFIX)
-                .header("Authorization", accessToken)
-                .contentType(contentType)
-                .content(requestJson))
-                .andExpect(status().isCreated())
-                .andExpect(content().contentType(contentType))
-                .andExpect(jsonPath("$.type").value(10L))
-                .andExpect(jsonPath("$.examDate").value(EXAM_DATE))
-                .andExpect(jsonPath("$.startTime").value(START_TIME))
-                .andExpect(jsonPath("$.endTime").value(END_TIME))
-                .andExpect(jsonPath("$.discount").value("0.0"))
-                .andExpect(jsonPath("$.doctor").value(6L))
-                .andExpect(jsonPath("$.nurse").value(3L))
-                .andExpect(jsonPath("$.room").value(11L))
-                .andExpect(jsonPath("$.patient").value(4L));
-    }*/
 
     @Test
     public void testCreateExaminationBadRequestWrongDateFormat() throws Exception {
